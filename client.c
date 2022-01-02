@@ -6,15 +6,14 @@
 /*   By: schahid <schahid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:36:46 by schahid           #+#    #+#             */
-/*   Updated: 2021/12/27 18:54:33 by schahid          ###   ########.fr       */
+/*   Updated: 2022/01/01 16:16:25 by schahid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minitalk.h"
 
 void	send_bit(int pid, char *str, size_t len)
 {
-	int	shift;
+	int		shift;
 	size_t	i;
 
 	i = 0;
@@ -28,18 +27,17 @@ void	send_bit(int pid, char *str, size_t len)
 			else
 				kill(pid, SIGUSR1);
 			shift++;
-			usleep(100);
+			usleep(300);
 		}
 		i++;
 	}
-    if (SIGUSR2)
-            ft_printf("bien recus");
 }
-int main(int argc, char **argv)
+
+int	main(int argc, char **argv)
 {
 	int		pid;
 	char	*str;
-	
+
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);

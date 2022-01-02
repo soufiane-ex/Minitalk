@@ -6,32 +6,30 @@
 /*   By: schahid <schahid@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 15:36:16 by schahid           #+#    #+#             */
-/*   Updated: 2021/12/27 18:54:12 by schahid          ###   ########.fr       */
+/*   Updated: 2022/01/02 14:07:20 by schahid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-static t_message	msg;
+t_message	g_msg;
 
 void	bit_handler(int bit)
 {
-	msg.c += ((bit & 1) << msg.i);
-	msg.i++;
-	if (msg.i == 7)
+	g_msg.c += ((bit & 1) << g_msg.i);
+	g_msg.i++;
+	int i = 0;
+	if (g_msg.i == 7)
 	{
-		ft_printf("%c", msg.c);
-		if(!msg.c)
+		ft_printf("%c", g_msg.c);
+		if (!g_msg.c)
 			ft_printf("\n");
-		msg.c = 0;
-		msg.i = 0;
+		g_msg.c = 0;
+		g_msg.i = 0;
 	}
 }
 
-int main(void)
+int	main(void)
 {
-	msg.c = 0;
-	msg.i = 0;
 	ft_printf("********Welcome to the server**********\n");
 	ft_printf("***************************************\n");
 	ft_printf("Server PID : %d\n", getpid());
